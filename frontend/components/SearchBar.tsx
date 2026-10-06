@@ -1,0 +1,3 @@
+"use client";
+import {useState} from "react"; import {Search} from "lucide-react"; import {useRouter} from "next/navigation";
+export default function SearchBar(){const [location,setLocation]=useState(""); const [guests,setGuests]=useState(""); const router=useRouter(); return <div className="searchbar"><div><label>Where</label><input value={location} onChange={e=>setLocation(e.target.value)} placeholder="Search destinations"/></div><div><label>Guests</label><input type="number" min="1" value={guests} onChange={e=>setGuests(e.target.value)} placeholder="Add guests"/></div><button onClick={()=>router.push(`/?location=${encodeURIComponent(location)}${guests?`&guests=${guests}`:""}`)}><Search size={20}/></button></div>}
